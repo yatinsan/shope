@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET home page. */
-router.get('/', function (req, res, next) {
+/* GET users listing. */
+router.get('/', function(req, res, next) {
 
   let products = [
     {
@@ -24,8 +24,12 @@ router.get('/', function (req, res, next) {
       image: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ9NFuKu-9ifntYSQEeen-RB1XI2ZrtL8yU7Q&usqp=CAU"
     }
   ]
+  res.render('admin/view-products',{admin:true,products})
+});
+router.get('/add-product',function(req,res,next){
 
-  res.render('index', { products,admin:true });
+  res.render('admin/add-product')
+  
 });
 
 module.exports = router;
