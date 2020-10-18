@@ -26,10 +26,16 @@ router.get('/', function(req, res, next) {
   ]
   res.render('admin/view-products',{admin:true,products})
 });
-router.get('/add-product',function(req,res,next){
+router.get('/add-product',function(req,res){
 
-  res.render('admin/add-product')
+  res.render('admin/add-product',{admin:true})
   
+});
+
+router.post('/add-product',function(req,res){
+  console.log(req.body)
+  console.log('hello')
+  res.send("og")
 });
 
 module.exports = router;
