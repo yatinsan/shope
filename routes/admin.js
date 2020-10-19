@@ -1,15 +1,17 @@
 var express = require('express');
+const productHelpers = require('../helpers/product-helpers');
 var router = express.Router();
+var productHelper=require('../helpers/product-helpers')
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-
   let products = [
     {
       name: "pendrive",
       category: "electronics",
       description: "3.0 diver fast 16gb",
-      image:"https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS-EnNiZ7jysZRecjc_Dos5BdhHjKXHHJFqwg&usqp=CAU"
+      image:"https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS-EnNiZ7jysZRecjc_Dos5BdhHjKXHHJFqwg&usqp=CAU",
+      price:"5,500"
     },
     {
       name: "memory card",
@@ -24,6 +26,8 @@ router.get('/', function(req, res, next) {
       image: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ9NFuKu-9ifntYSQEeen-RB1XI2ZrtL8yU7Q&usqp=CAU"
     }
   ]
+
+  
   res.render('admin/view-products',{admin:true,products})
 });
 router.get('/add-product',function(req,res){
@@ -34,8 +38,19 @@ router.get('/add-product',function(req,res){
 
 router.post('/add-product',function(req,res){
   console.log(req.body)
-  console.log('hello')
-  res.send("og")
+  console.log(req.files.image)
+  productHelpers.addProduct(req.body,(id)=>{
+    let image=req.files.image
+    image.mv('./public/product-image/'+id+'.jpg',(err,done)=>{
+      if(!err){
+        res.render('admin/add-product')
+      }
+      else{
+        console.log(err)
+      }
+    })
+    
+  })
 });
 
 module.exports = router;

@@ -11,6 +11,18 @@ var hbs=require('express-handlebars')
 var app = express();
 var fileuplode=require('express-fileupload')
 
+
+
+var db=require('./config/connection')
+
+db.connect((err)=>{
+  if(err)
+  console.log('Connection Error');
+  else
+  console.log('database connected to port ');
+})
+
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');

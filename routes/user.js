@@ -9,7 +9,8 @@ router.get('/', function (req, res, next) {
       name: "pendrive",
       category: "electronics",
       description: "3.0 diver fast 16gb",
-      image:"https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS-EnNiZ7jysZRecjc_Dos5BdhHjKXHHJFqwg&usqp=CAU"
+      image:"https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS-EnNiZ7jysZRecjc_Dos5BdhHjKXHHJFqwg&usqp=CAU",
+      price:"5,500"
     },
     {
       name: "memory card",

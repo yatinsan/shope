@@ -1,5 +1,5 @@
 <section>
-    <div class="container">
+    <div class="container p-0">
         <table class="table">
             <thead>
                 <tr>
@@ -7,6 +7,7 @@
                     <th scope="col">title</th>
                     <th scope="col">category</th>
                     <th scope="col">description</th>
+                    <th scope="col">PRICE</th>
                     <th scope="col">image</th>
                 </tr>
             </thead>
@@ -17,6 +18,8 @@
                     <td>{{this.name}}</td>
                     <td>{{this.category}}</td>
                     <td>{{this.description}}</td>
+                    <td>{{this.price}}</td>
+                    
                     <td><img style="width: 5em; height: 5em;" src="{{this.image}}" alt=""></td>
                 </tr>
                 {{/each}}
